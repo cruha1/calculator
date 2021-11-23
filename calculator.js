@@ -1,6 +1,6 @@
 var drawCalculator=function(){
   fill(255,255,255);
-  rect(25,75,267,100, 10)
+  rect(25,75,270,100, 10)
  zero.draw();
  one.draw();
  two.draw();
