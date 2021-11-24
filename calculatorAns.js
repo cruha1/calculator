@@ -1,21 +1,20 @@
 var calculateAns = function(numbers, functions){
   var intNums = convertToInt(numbers)
-  console.log(intNums)
   return calculate(functions, intNums);
-  
 }
 
 var convertToInt = function(numbers){
   var intNums = [];
   for (var i= 0; i <= numbers.length-1; i++){
-      if(numbers[i]=== ""){
-         
+      if(numbers[i]=== ""){ 
+      }else if (isItSqrt(numbers[i]) && isItSq(numbers[i])){
+       append(intNums, float(power(str(root(numbers[i])))));
       }else if (isItSqrt(numbers[i])){
-       append(intNums, sqrt(float(deleteHash(numbers[i]))));
-      } else if (isItSq(numbers[i])){
-       append(intNums, pow(float(delete2(numbers[i])), 2));
-      } else {
-       append(intNums, int(numbers[i]));
+       append(intNums, float(root(numbers[i])));
+      }else if (isItSq(numbers[i])){
+       append(intNums, float(power(numbers[i])));
+      }else {
+       append(intNums, float(numbers[i]));
       }
   }
   return intNums;
@@ -32,10 +31,25 @@ var isItSqrt = function(string){
   }
 }
 
-var deleteHash = function(string){
+var isItCoeff = function(string){
   var nums = []
-  nums = float(split(string, '√'));
-  return nums[1]
+  nums = split(string, '√');
+  if(nums[0] != ""){
+    return true
+  }else {
+    return false
+  }
+}
+
+var root = function(string){
+  var nums = []
+  nums = split(string, '√');
+  console.log(nums)
+  if(nums[0] != ""){
+    return str(float(nums[0])*sqrt(float(nums[1])))
+  }else {
+    return sqrt(float(nums[1]))
+  }
 }
 
 var isItSq = function(string){
@@ -49,16 +63,13 @@ var isItSq = function(string){
   }
 }
 
-var delete2 = function(string){
+var power = function(string){
   var nums = []
   nums = float(split(string, '²'));
-  console.log(nums[0])
-  return nums[0]
+  return pow(nums[0],2);
 }
 
 var calculate = function(functions, numbers){
-  console.log(functions.length+1)
-  console.log(numbers.length)
   if (functions.length+1>numbers.length){
     return "ERROR";
   }
@@ -92,7 +103,7 @@ var calculate = function(functions, numbers){
       }
     }
   }
-  return numbers[0];
+  return round(numbers[0], 3);
 }
 
 var deleteFromArr = function(array, index){
