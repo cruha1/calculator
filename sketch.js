@@ -75,7 +75,7 @@ mouseClicked = function() {
           append(numbers, "");
           append(functions, "÷");
           display += "÷";
-        }else if (power.isUnderMouse(mouseX, mouseY)) {
+        }else if (powerb.isUnderMouse(mouseX, mouseY)) {
           numbers[numbers.length-1] += "²";
           display += "²";
         }else if (squareroot.isUnderMouse(mouseX, mouseY)) {
