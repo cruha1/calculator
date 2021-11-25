@@ -1,18 +1,18 @@
 var calculateAns = function(numbers, functions){
-  var intNums = convertToInt(numbers)
+  var intNums = convertToInt(numbers, functions)
   return calculate(functions, intNums);
 }
 
-var convertToInt = function(numbers){
+var convertToInt = function(numbers, functions){
   var intNums = [];
   for (var i= 0; i <= numbers.length-1; i++){
       if(numbers[i]=== ""){ 
       }else if (isItSqrt(numbers[i]) && isItSq(numbers[i])){
-       append(intNums, float(power(str(root(numbers[i])))));
+       append(intNums, float(power(str(root(numbers[i]), functions[i-1], numbers[0]))));
       }else if (isItSqrt(numbers[i])){
        append(intNums, float(root(numbers[i])));
       }else if (isItSq(numbers[i])){
-       append(intNums, float(power(numbers[i])));
+       append(intNums, float(power(numbers[i], functions[i-1], numbers[0])));
       }else {
        append(intNums, float(numbers[i]));
       }
@@ -31,10 +31,8 @@ var isItSqrt = function(string){
   }
 }
 
-var isItCoeff = function(string){
-  var nums = []
-  nums = split(string, '√');
-  if(nums[0] != ""){
+var isItCoeff = function(nums){
+  if(nums[0] != "" && nums[0] != 0){
     return true
   }else {
     return false
@@ -44,8 +42,7 @@ var isItCoeff = function(string){
 var root = function(string){
   var nums = []
   nums = split(string, '√');
-  console.log(nums)
-  if(nums[0] != ""){
+  if(isItCoeff(nums)){
     return str(float(nums[0])*sqrt(float(nums[1])))
   }else {
     return sqrt(float(nums[1]))
@@ -63,10 +60,14 @@ var isItSq = function(string){
   }
 }
 
-var power = function(string){
+var power = function(string, functions, num){
   var nums = []
   nums = float(split(string, '²'));
-  return pow(nums[0],2);
+  if (functions === "-" && num === "0"){
+    return -1*pow(nums[0],2);
+  }else {
+    return pow(nums[0],2);
+  }
 }
 
 var calculate = function(functions, numbers){
