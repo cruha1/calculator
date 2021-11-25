@@ -1,19 +1,19 @@
 var drawCalculator=function(){
   fill(255,255,255);
   rect(25,75,270,100, 10)
- zero.draw();
- one.draw();
- two.draw();
- three.draw();
- four.draw();
- five.draw();
- six.draw();
- seven.draw();
- eight.draw();
- nine.draw();
- dot.draw();
+  zero.draw();
+  one.draw();
+  two.draw();
+  three.draw();
+  four.draw();
+  five.draw();
+  six.draw();
+  seven.draw();
+  eight.draw();
+  nine.draw();
+  dot.draw();
   equal.draw();
-  power.draw();
+  powerb.draw();
   squareroot.draw();
   plus.draw();
   minus.draw();
@@ -91,15 +91,13 @@ Button2.prototype.draw = function() {
     text(this.message, this.x-9, this.y+9);
 };
 
-
 var equal = new Button2(265, row1, "=", 0);
 var plus = new Button2(265, row2, "+", 0);
 var minus = new Button2(265, row3, "-", 0);
 var multiply = new Button2(265, row4, "x", 0);
 var divide = new Button2(265, row5, "÷", 0);
-var power = new Button2(195, row5, "", 0);
+var powerb = new Button2(195, row5, "", 0);
 var squareroot = new Button2(125, row5, "√", 0);
-
 
 var Button3 = function(x, y, message, x2) {
     this.x = x;
